@@ -12,3 +12,12 @@ Este repositorio contiene todo el material relacionado con la asignatura de **Ac
 - **Bases de datos noSQL**, explorando su uso y características en diferentes contextos.
 
 Este repositorio incluye código de ejemplos, ejercicios prácticos, proyectos y documentación relacionada con los conceptos estudiados.
+
+<h2>💻 Tecnologías</h2>
+
+Tecnologías usadas en este proyecto:
+
+*   Java
+*   Spring
+*   Oracle DataBase
+*   MongoDB
