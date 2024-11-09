@@ -1,0 +1,8 @@
+Daniel, Porras Morales, danielpm.dev@gmail.com, 629893238, Tresjuncos, Bachillerato, 2002-12-05, DAM, 3, Si, Muy motivado, DEPORTE, MUSICA, VIDEOJUEGOS
+Álvaro, Del Álamo Diaz, delalvaro947@gmail.com, 654306308, Consuegra, Bachillerato, 2005-10-10, DAM, 4, Si, Muy motivado, DEPORTE, MUSICA, VIDEOJUEGOS
+Roberto, Sánchez Muñoz, robsanz394@gmail.com, 611435613, Pedro Muñoz, Bachillerato, 2005-05-11, DAM, 5, No, Motivado, COLECCIONAR, MUSICA, VIDEOJUEGOS, PINTURA_ESCULTURA, OTROS
+Álvaro, Muñoz Panadero, amupan2005@gmail.com, 656667142, Alcázar de San Juan, Bachillerato, 2005-06-04, DAM, 4, Si, Motivado, DEPORTE, MUSICA, VIDEOJUEGOS
+Óscar, Rodriguez Cantero, rodriguezcanterooscar@gmail.com, 699703921, Pedro Muñoz, Bachillerato, 2005-10-14, DAM, 4, No, Muy motivado, LECTURA, DEPORTE, MUSICA, VIDEOJUEGOS, VOLUNTARIADO
+Juan Carlos, Diaz Moreno, dizmo120@gmail.com, 699725722, Tomelloso, Bachillerato, 2004-05-06, DAM, 5, Si, Motivado, DEPORTE, MUSICA, VIDEOJUEGOS, OTROS
+Jesus David, Villalba Ortega, jesdavillort@gmail.com, 668640052, Miguel Esteban, Bachillerato, 2005-01-13, DAM, 3, Si, Motivado, LECTURA, DEPORTE, MUSICA, VIDEOJUEGOS, PINTURA_ESCULTURA, FOTOGRAFIA
+Ruben, Sanchez Delgado, rubencini888@gmail.com, 640 58 73 18, Alcazar, Bachillerato, 2005-09-08, DAM, 3, Si, Motivado, DEPORTE, MUSICA, VIDEOJUEGOS, SENDERISMO, OTROS

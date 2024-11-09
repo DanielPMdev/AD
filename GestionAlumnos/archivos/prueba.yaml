@@ -1,0 +1,322 @@
+- !!org.example.modelo.Alumno
+  apellidos: Porras Morales
+  carnet: Si
+  ciclo: DAM
+  estudios: Bachillerato
+  fechaNacimiento: {
+    }
+  hobbies:
+  - !!org.example.modelo.Hobby 'DEPORTE'
+  - !!org.example.modelo.Hobby 'MUSICA'
+  - !!org.example.modelo.Hobby 'VIDEOJUEGOS'
+  localidad: Tresjuncos
+  mail: danielpm.dev@gmail.com
+  motivacion: Muy motivado
+  nivelOrdenador: 3
+  nombre: Daniel
+  telefono: '629893238'
+- !!org.example.modelo.Alumno
+  apellidos: Barrios Garcia
+  carnet: Si
+  ciclo: DAM
+  estudios: Universidad (completo o algun curso)
+  fechaNacimiento: {
+    }
+  hobbies:
+  - !!org.example.modelo.Hobby 'COLECCIONAR'
+  - !!org.example.modelo.Hobby 'DEPORTE'
+  - !!org.example.modelo.Hobby 'MUSICA'
+  - !!org.example.modelo.Hobby 'SENDERISMO'
+  localidad: La Puebla de Almoradiel
+  mail: german.barriosgar@gmail.com
+  motivacion: Muy motivado
+  nivelOrdenador: 4
+  nombre: Germán
+  telefono: '606691149'
+- !!org.example.modelo.Alumno
+  apellidos: Carreño Salas
+  carnet: Si
+  ciclo: DAM
+  estudios: Ciclo de grado medio
+  fechaNacimiento: {
+    }
+  hobbies:
+  - !!org.example.modelo.Hobby 'DEPORTE'
+  - !!org.example.modelo.Hobby 'VIDEOJUEGOS'
+  localidad: madridejos
+  mail: robertocs1994@gmail.com
+  motivacion: Muy motivado
+  nivelOrdenador: 5
+  nombre: roberto
+  telefono: '684133132'
+- !!org.example.modelo.Alumno
+  apellidos: Del Álamo Diaz
+  carnet: Si
+  ciclo: DAM
+  estudios: Bachillerato
+  fechaNacimiento: {
+    }
+  hobbies:
+  - !!org.example.modelo.Hobby 'DEPORTE'
+  - !!org.example.modelo.Hobby 'MUSICA'
+  - !!org.example.modelo.Hobby 'VIDEOJUEGOS'
+  localidad: Consuegra
+  mail: delalvaro947@gmail.com
+  motivacion: Muy motivado
+  nivelOrdenador: 4
+  nombre: Álvaro
+  telefono: '654306308'
+- !!org.example.modelo.Alumno
+  apellidos: Molero Torres
+  carnet: Si
+  ciclo: DAM
+  estudios: Universidad (completo o algun curso)
+  fechaNacimiento: {
+    }
+  hobbies:
+  - !!org.example.modelo.Hobby 'DEPORTE'
+  - !!org.example.modelo.Hobby 'OTROS'
+  localidad: Quintanar De La Orden
+  mail: alexmolerotorres@gmail.com
+  motivacion: Muy motivado
+  nivelOrdenador: 4
+  nombre: Alejandro
+  telefono: '628694072'
+- !!org.example.modelo.Alumno
+  apellidos: Sánchez Muñoz
+  carnet: 'No'
+  ciclo: DAM
+  estudios: Bachillerato
+  fechaNacimiento: {
+    }
+  hobbies:
+  - !!org.example.modelo.Hobby 'COLECCIONAR'
+  - !!org.example.modelo.Hobby 'MUSICA'
+  - !!org.example.modelo.Hobby 'VIDEOJUEGOS'
+  - !!org.example.modelo.Hobby 'PINTURA_ESCULTURA'
+  - !!org.example.modelo.Hobby 'OTROS'
+  localidad: Pedro Muñoz
+  mail: robsanz394@gmail.com
+  motivacion: Motivado
+  nivelOrdenador: 5
+  nombre: Roberto
+  telefono: '611435613'
+- !!org.example.modelo.Alumno
+  apellidos: Muñoz Panadero
+  carnet: Si
+  ciclo: DAM
+  estudios: Bachillerato
+  fechaNacimiento: {
+    }
+  hobbies:
+  - !!org.example.modelo.Hobby 'DEPORTE'
+  - !!org.example.modelo.Hobby 'MUSICA'
+  - !!org.example.modelo.Hobby 'VIDEOJUEGOS'
+  localidad: Alcázar de San Juan
+  mail: amupan2005@gmail.com
+  motivacion: Motivado
+  nivelOrdenador: 4
+  nombre: Álvaro
+  telefono: '656667142'
+- !!org.example.modelo.Alumno
+  apellidos: Rodriguez Cantero
+  carnet: 'No'
+  ciclo: DAM
+  estudios: Bachillerato
+  fechaNacimiento: {
+    }
+  hobbies:
+  - !!org.example.modelo.Hobby 'LECTURA'
+  - !!org.example.modelo.Hobby 'DEPORTE'
+  - !!org.example.modelo.Hobby 'MUSICA'
+  - !!org.example.modelo.Hobby 'VIDEOJUEGOS'
+  - !!org.example.modelo.Hobby 'VOLUNTARIADO'
+  localidad: Pedro Muñoz
+  mail: rodriguezcanterooscar@gmail.com
+  motivacion: Muy motivado
+  nivelOrdenador: 4
+  nombre: Óscar
+  telefono: '699703921'
+- !!org.example.modelo.Alumno
+  apellidos: Sevilla Espinosa
+  carnet: 'No'
+  ciclo: DAM
+  estudios: Ciclo de grado medio
+  fechaNacimiento: {
+    }
+  hobbies:
+  - !!org.example.modelo.Hobby 'LECTURA'
+  - !!org.example.modelo.Hobby 'DEPORTE'
+  - !!org.example.modelo.Hobby 'MUSICA'
+  - !!org.example.modelo.Hobby 'VIDEOJUEGOS'
+  - !!org.example.modelo.Hobby 'OTROS'
+  localidad: Tomelloso
+  mail: fernandosevilla028@gmail.com
+  motivacion: Motivado
+  nivelOrdenador: 4
+  nombre: Fernando
+  telefono: '606544811'
+- !!org.example.modelo.Alumno
+  apellidos: Diaz Moreno
+  carnet: Si
+  ciclo: DAM
+  estudios: Bachillerato
+  fechaNacimiento: {
+    }
+  hobbies:
+  - !!org.example.modelo.Hobby 'DEPORTE'
+  - !!org.example.modelo.Hobby 'MUSICA'
+  - !!org.example.modelo.Hobby 'VIDEOJUEGOS'
+  - !!org.example.modelo.Hobby 'OTROS'
+  localidad: Tomelloso
+  mail: dizmo120@gmail.com
+  motivacion: Motivado
+  nivelOrdenador: 5
+  nombre: Juan Carlos
+  telefono: '699725722'
+- !!org.example.modelo.Alumno
+  apellidos: Villalba Ortega
+  carnet: Si
+  ciclo: DAM
+  estudios: Bachillerato
+  fechaNacimiento: {
+    }
+  hobbies:
+  - !!org.example.modelo.Hobby 'LECTURA'
+  - !!org.example.modelo.Hobby 'DEPORTE'
+  - !!org.example.modelo.Hobby 'MUSICA'
+  - !!org.example.modelo.Hobby 'VIDEOJUEGOS'
+  - !!org.example.modelo.Hobby 'PINTURA_ESCULTURA'
+  - !!org.example.modelo.Hobby 'FOTOGRAFIA'
+  localidad: Miguel Esteban
+  mail: jesdavillort@gmail.com
+  motivacion: Motivado
+  nivelOrdenador: 3
+  nombre: Jesus David
+  telefono: '668640052'
+- !!org.example.modelo.Alumno
+  apellidos: Guijarro Verbo
+  carnet: Si
+  ciclo: DAM
+  estudios: Ciclo de grado medio
+  fechaNacimiento: {
+    }
+  hobbies:
+  - !!org.example.modelo.Hobby 'LECTURA'
+  - !!org.example.modelo.Hobby 'MUSICA'
+  - !!org.example.modelo.Hobby 'VIDEOJUEGOS'
+  localidad: Consuegra
+  mail: ivanverbo15@gmail.com
+  motivacion: Muy motivado
+  nivelOrdenador: 3
+  nombre: Iván
+  telefono: '664801553'
+- !!org.example.modelo.Alumno
+  apellidos: Yáñez Jiménez
+  carnet: 'No'
+  ciclo: DAM
+  estudios: Ciclo de grado medio
+  fechaNacimiento: {
+    }
+  hobbies:
+  - !!org.example.modelo.Hobby 'COLECCIONAR'
+  - !!org.example.modelo.Hobby 'LECTURA'
+  - !!org.example.modelo.Hobby 'MUSICA'
+  - !!org.example.modelo.Hobby 'VIDEOJUEGOS'
+  - !!org.example.modelo.Hobby 'SENDERISMO'
+  - !!org.example.modelo.Hobby 'OTROS'
+  localidad: Villacañas
+  mail: pabloyanezjimenez@gmail.com
+  motivacion: Motivado
+  nivelOrdenador: 4
+  nombre: Pablo
+  telefono: '652889843'
+- !!org.example.modelo.Alumno
+  apellidos: Novillo Benito
+  carnet: Si
+  ciclo: DAM
+  estudios: Ciclo de grado medio
+  fechaNacimiento: {
+    }
+  hobbies:
+  - !!org.example.modelo.Hobby 'LECTURA'
+  - !!org.example.modelo.Hobby 'MUSICA'
+  - !!org.example.modelo.Hobby 'VIDEOJUEGOS'
+  localidad: Tembleque
+  mail: rubenantonames@gmail.com
+  motivacion: Muy motivado
+  nivelOrdenador: 4
+  nombre: Jaime
+  telefono: '634903490'
+- !!org.example.modelo.Alumno
+  apellidos: Cobo Cano
+  carnet: 'No'
+  ciclo: DAM
+  estudios: Ciclo de grado medio
+  fechaNacimiento: {
+    }
+  hobbies:
+  - !!org.example.modelo.Hobby 'COLECCIONAR'
+  - !!org.example.modelo.Hobby 'MUSICA'
+  - !!org.example.modelo.Hobby 'VIDEOJUEGOS'
+  - !!org.example.modelo.Hobby 'PINTURA_ESCULTURA'
+  localidad: Tomelloso
+  mail: raquelcobo02@gmail.com
+  motivacion: Motivado
+  nivelOrdenador: 4
+  nombre: Raquel
+  telefono: '692252717'
+- !!org.example.modelo.Alumno
+  apellidos: Verbo
+  carnet: Si
+  ciclo: DAM
+  estudios: Ciclo de grado medio
+  fechaNacimiento: {
+    }
+  hobbies:
+  - !!org.example.modelo.Hobby 'MUSICA'
+  - !!org.example.modelo.Hobby 'VIDEOJUEGOS'
+  - !!org.example.modelo.Hobby 'OTROS'
+  localidad: Consuegra
+  mail: danielverbo2005@gmail.com
+  motivacion: Motivado
+  nivelOrdenador: 3
+  nombre: Daniel
+  telefono: '610113375'
+- !!org.example.modelo.Alumno
+  apellidos: Sanchez Delgado
+  carnet: Si
+  ciclo: DAM
+  estudios: Bachillerato
+  fechaNacimiento: {
+    }
+  hobbies:
+  - !!org.example.modelo.Hobby 'DEPORTE'
+  - !!org.example.modelo.Hobby 'MUSICA'
+  - !!org.example.modelo.Hobby 'VIDEOJUEGOS'
+  - !!org.example.modelo.Hobby 'SENDERISMO'
+  - !!org.example.modelo.Hobby 'OTROS'
+  localidad: Alcazar
+  mail: rubencini888@gmail.com
+  motivacion: Motivado
+  nivelOrdenador: 3
+  nombre: Ruben
+  telefono: 640 58 73 18
+- !!org.example.modelo.Alumno
+  apellidos: Torres Valencia
+  carnet: 'No'
+  ciclo: DAM
+  estudios: Ciclo de grado medio
+  fechaNacimiento: {
+    }
+  hobbies:
+  - !!org.example.modelo.Hobby 'COLECCIONAR'
+  - !!org.example.modelo.Hobby 'VIDEOJUEGOS'
+  - !!org.example.modelo.Hobby 'SENDERISMO'
+  - !!org.example.modelo.Hobby 'OTROS'
+  localidad: Alcázar de San Juan
+  mail: torresvalenciadiego6@gmail.com
+  motivacion: Muy motivado
+  nivelOrdenador: 5
+  nombre: Diego
+  telefono: '34695408026'
