@@ -1,0 +1,50 @@
+[
+  {
+    "_id": 0,
+    "nombre": "Paco",
+    "posicion": "top",
+    "nacionalidad": "Español",
+    "estadisticas": {
+      "kda": 8.2,
+      "cs_por_minuto": 6.5,
+      "participacion_kill": 45
+    },
+    "id_equipo": 0
+  },
+  {
+    "_id": 1,
+    "nombre": "Sofia",
+    "posicion": "mid",
+    "nacionalidad": "Español",
+    "estadisticas": {
+      "kda": 3.4,
+      "cs_por_minuto": 4.3,
+      "participacion_kill": 34
+    },
+    "id_equipo": 0
+  },
+  {
+    "_id": 2,
+    "nombre": "Laura",
+    "posicion": "adc",
+    "nacionalidad": "Español",
+    "estadisticas": {
+      "kda": 4.3,
+      "cs_por_minuto": 8.5,
+      "participacion_kill": 52
+    },
+    "id_equipo": 1
+  },
+  {
+    "_id": 3,
+    "nombre": "German",
+    "posicion": "jungla",
+    "nacionalidad": "Alemania",
+    "estadisticas": {
+      "kda": 10.4,
+      "cs_por_minuto": 7.4,
+      "participacion_kill": 74
+    },
+    "id_equipo": 0
+  }
+]

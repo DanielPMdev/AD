@@ -1,0 +1,5 @@
+_id,nombre,posicion,nacionalidad,estadisticas.kda,estadisticas.cs_por_minuto,estadisticas.participacion_kill,id_equipo
+0,Paco,top,Español,8.2,6.5,45,0
+1,Sofia,mid,Español,3.4,4.3,34,0
+2,Laura,adc,Español,4.3,8.5,52,1
+3,German,jungla,Alemania,10.4,7.4,74,0

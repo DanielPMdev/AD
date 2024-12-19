@@ -1,0 +1,4 @@
+_id,nombre,region,ano_fundacion,titulos[0].tipo,titulos[1].tipo,titulos[2].tipo,titulos[0].cantidad,titulos[1].cantidad,titulos[2].cantidad,entrenador,jugadores[0],jugadores[1],jugadores[2]
+0,KOI,LEC,2022,MSI,Worlds,Liga Nacional,0,0,1,Ibai,0,1,3
+1,Prueba00,LCK,1999,MSI,Worlds,Liga Nacional,8,4,3,CR7,2,4,7
+2,Prueba01,LEC,2002,MSI,Worlds,Liga Nacional,3,0,8,Messi,5,6,
