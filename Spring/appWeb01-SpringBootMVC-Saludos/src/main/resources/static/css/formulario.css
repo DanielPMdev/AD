@@ -1,0 +1,122 @@
+/* Estilos para el formulario */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+h2 {
+    color: #333;
+    text-align: center;
+    font-size: 24px;
+    margin-top: 30px;
+}
+
+form {
+    max-width: 500px;
+    margin: 20px auto;
+    background: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #555;
+}
+
+input[type="text"],
+input[type="number"],
+select,
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+select:focus,
+textarea:focus {
+    border-color: #4CAF50;
+    outline: none;
+}
+
+textarea {
+    resize: vertical;
+}
+
+input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+button {
+    background-color: #4CAF50;
+    color: #fff;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 18px;
+    width: 100%;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+button:focus {
+    outline: none;
+}
+
+button:active {
+    background-color: #387f38;
+}
+
+/* Estilos adicionales para la estructura */
+h2 {
+    margin-bottom: 20px;
+}
+
+form > label {
+    font-size: 18px;
+}
+
+select,
+textarea {
+    font-size: 16px;
+}
+
+input[type="checkbox"] + label {
+    font-size: 16px;
+}
+
+input[type="checkbox"] {
+    margin-top: 5px;
+}
+
+form > div {
+    margin-bottom: 20px;
+}
+
+@media (max-width: 600px) {
+    form {
+        width: 90%;
+    }
+
+    button {
+        padding: 12px;
+        font-size: 16px;
+    }
+}

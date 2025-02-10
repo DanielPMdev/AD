@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Salida</title>
+    <link rel="stylesheet" type="text/css" href="/css/salida.css">
+</head>
+<body>
+<h2>Datos recibidos:</h2>
+<div class="datos">
+    <p th:text="'Nombre: ' + ${rPersona.nombre}"></p>
+    <p th:text="'Apellidos: ' + ${rPersona.apellidos}"></p>
+    <p th:text="'Teléfono: ' + ${rPersona.telefono}"></p>
+    <p th:text="'Email: ' + ${rPersona.email}"></p>
+    <p th:text="'Localidad: ' + ${rPersona.localidad}"></p>
+    <p th:text="'Edad: ' + ${rPersona.edad}"></p>
+    <p th:text="'Hobby: ' + ${rPersona.hobby}"></p>
+    <p th:text="'Comentario: ' + ${rPersona.comentario}"></p>
+    <p th:text="'Comidas: ' + ${rPersona.comidas}"></p>
+    <p th:text="'Equipo: ' + ${rPersona.equipo}"></p>
+</div>
+
+
+<div>
+    <!-- Botón para volver al formulario -->
+    <a th:href="@{/formulario}">
+        <button>Volver al Formulario</button>
+    </a>
+
+    <!-- Botón para mostrar la lista -->
+    <a th:href="@{/personas/list}">
+        <button class="btn btn-primary">Mostrar la lista</button>
+    </a>
+
+</div>
+
+
+<!-- Sección con estilo similar al formulario -->
+<div class="formulario-estilo">
+    <!-- Contenido de la sección similar al formulario -->
+</div>
+</body>
+</html>

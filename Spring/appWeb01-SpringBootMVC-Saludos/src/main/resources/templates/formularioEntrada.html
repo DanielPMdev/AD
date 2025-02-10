@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Formulario</title>
+    <link rel="stylesheet" type="text/css" href="/css/formulario.css">
+
+</head>
+<body>
+<h2>Ingresa tus datos</h2>
+<form action="#" th:action="@{/formulario}" th:object="${rPersona}" method="post">
+    <label>Nombre:</label>
+    <input type="text" th:field="*{nombre}" required/><br/>
+
+    <label>Apellidos:</label>
+    <input type="text" th:field="*{apellidos}" required/><br/>
+
+    <label>Teléfono:</label>
+    <input type="text" th:field="*{telefono}" required/><br/>
+
+    <label>Email:</label>
+    <input type="text" th:field="*{email}" required/><br/>
+
+    <label>Localidad:</label>
+    <input type="text" th:field="*{localidad}" required/><br/>
+
+    <label>Edad:</label>
+    <input type="number" th:field="*{edad}" required/><br/>
+
+    <label for="hobby">Elige tu Hobby:</label>
+    <select id="hobby" name="hobby" th:field="*{hobby}">
+        <option th:each="hobby : ${hobbies}"
+                th:value="${hobby}"
+                th:text="${hobby}">
+        </option>
+    </select>
+
+    <label for="comentario">Comentario:</label>
+    <textarea id="comentario" name="comentario" rows="4" cols="50"></textarea>
+
+    <label>Selecciona tus comidas favoritas:</label><br>
+    <input type="checkbox" id="lentejas" name="comidas" value="lentejas">
+    <label for="lentejas">Lentejas</label><br>
+
+    <input type="checkbox" id="pizza" name="comidas" value="pizza">
+    <label for="pizza">Pizza</label><br>
+
+    <input type="checkbox" id="macarrones" name="comidas" value="macarrones">
+    <label for="macarrones">Macarrones</label><br>
+
+    <input type="checkbox" id="ensalada" name="comidas" value="ensalada">
+    <label for="ensalada">Ensalada</label><br>
+
+
+    <label for="equipo">Elige tu Equipo:</label>
+    <select id="equipo" name="equipo" th:field="*{equipo}">
+        <option th:each="equipo : ${equipos}"
+                th:value="${equipo.name()}"
+                th:text="${equipo.getNombre()}"> <!-- Muestra directamente el nombre del equipo -->
+        </option>
+    </select>
+
+    <button type="submit">Enviar</button>
+</form>
+
+
+</body>
+</html>

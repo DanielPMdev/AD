@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Menú de URLs</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .menu {
+            width: 300px; /* Ancho del menú */
+            margin: 0 auto; /* Centrar el menú */
+        }
+        .menu select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            appearance: none; /* Estilo consistente en todos los navegadores */
+            -webkit-appearance: none; /* Estilo para Safari */
+            -moz-appearance: none; /* Estilo para Firefox */
+            background-color: #fff;
+            background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24h-24z' fill='none'/></svg>"); /* Flecha del menú */
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            padding-right: 30px; /* Espacio para la flecha */
+        }
+        .menu select:focus {
+            outline: none;
+            border-color: #4CAF50; /* Color al enfocar */
+        }
+    </style>
+</head>
+<body>
+<h1>Menú de URLs</h1>
+<div class="menu">
+    <select id="urlSelect" onchange="window.location.href=this.value;">
+        <option value="">Selecciona una URL</option>
+        <th:block th:each="url : ${urls}">
+            <option th:value="${url}" th:text="${url}"></option>
+        </th:block>
+    </select>
+</div>
+
+</body>
+</html>
