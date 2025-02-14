@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario de Clientes</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+    <style>
+        body {
+            background: #f4f4f4;
+            color: #333;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            padding: 25px;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            border: 1px solid #ddd;
+        }
+
+        .card h2 {
+            font-weight: bold;
+            color: #444;
+            text-align: center;
+        }
+
+        .btn {
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: bold;
+            padding: 10px;
+            border: none;
+        }
+
+        .btn-save {
+            background: #28a745;
+            color: white;
+            width: 100%;
+        }
+
+        .btn-save:hover {
+            background: #218838;
+        }
+
+        .btn-back {
+            background: #6c757d;
+            color: white;
+            width: 100%;
+        }
+
+        .btn-back:hover {
+            background: #5a6268;
+        }
+
+        hr {
+            border-top: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h2 th:text="${empleado.id == null ? '👨‍💼 Agregar Empleado' : '👨‍💼 Editar Empleado'}"></h2>
+    <hr>
+
+    <form th:action="@{/empleados}" th:object="${empleado}" method="post">
+        <input type="hidden" th:field="*{id}">
+
+        <div class="mb-3">
+            <label class="form-label">Nombre del Empleado:</label>
+            <input type="text" class="form-control" th:field="*{nombre}" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Departamento:</label>
+            <select class="form-control" th:field="*{departamento}" required>
+                <option th:each="departamento : ${departamentos}" th:value="${departamento.id}" th:text="${departamento.nombre}"></option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Salario:</label>
+            <input type="number" class="form-control" th:field="*{salario}" step="0.01" required>
+        </div>
+
+        <input hidden="hidden" id="data-fecha" th:value="${#temporals.format(empleado.fechaNacimiento, 'yyyy-MM-dd')}">
+
+        <div class="mb-3">
+            <label class="form-label">Fecha de Nacimiento:</label>
+            <input type="date" class="form-control"  id="fechaNacimiento" th:field="*{fechaNacimiento}" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Dirección:</label>
+            <input type="text" class="form-control" th:field="*{direccion.direccion}" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Localidad:</label>
+            <input type="text" class="form-control" th:field="*{direccion.localidad}" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Código Postal:</label>
+            <input type="text" class="form-control" th:field="*{direccion.cp}" required>
+        </div>
+
+        <button type="submit" class="btn btn-save">
+            <i class="fas fa-save"></i> Guardar Empleado
+        </button>
+
+        <a class="btn btn-back mt-2" th:href="@{/empleados}">
+            <i class="fas fa-arrow-left"></i> Volver a la lista
+        </a>
+    </form>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        obtenerFecha();
+    });
+
+
+    function obtenerFecha() {
+        var fechaInput = document.getElementById('fechaNacimiento');
+        var fechaData = document.getElementById('data-fecha').value; // Asegurar que este elemento existe
+
+        //console.log("Fecha almacenada:", fechaData);
+
+        // Si necesitas asignar una fecha al input
+        if (!fechaData) {
+            fechaInput.value = new Date().toISOString().split('T')[0];
+        } else{
+            fechaInput.value = fechaData;
+        }
+    }
+</script>
+
+</body>
+</html>

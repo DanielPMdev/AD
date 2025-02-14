@@ -1,0 +1,45 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.menu-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.menu-item {
+    margin-bottom: 15px;
+}
+
+.menu-link {
+    display: inline-block;
+    padding: 10px 0; /* Ajustado el padding para mejor apariencia */
+    width: 80%; /* Ancho relativo al 80% del contenedor */
+    max-width: 300px; /* Ancho máximo para evitar que se extienda demasiado en pantallas grandes */
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.menu-link:hover {
+    background-color: #b3a400;
+}
+
+/* Media query para ajustar el ancho en pantallas pequeñas */
+@media (max-width: 600px) {
+    .menu-link {
+        width: 100%;
+    }
+}

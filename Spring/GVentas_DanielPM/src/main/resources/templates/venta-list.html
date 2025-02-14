@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Ventas</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+</head>
+<body>
+
+<nav th:insert="~{navegation :: miNav}"></nav>
+
+<div class="container mt-5 pt-5">
+    <h2 class="text-center mb-4">Lista de Ventas</h2>
+
+    <!-- Botón para agregar nueva venta -->
+    <div class="mb-3">
+        <a th:href="@{/ventas/new}" class="btn btn-success">
+            <i class="bi bi-plus-circle"></i> Nueva Venta
+        </a>
+    </div>
+
+    <!-- Tabla de Ventas -->
+    <table class="table table-striped table-bordered">
+        <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>Empleado</th>
+            <th>Artículo</th>
+            <th>Cliente</th>
+            <th>Fecha de Venta</th>
+            <th>Precio Venta</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="venta : ${ventas}">
+            <td th:text="${venta.id}"></td>
+            <td th:text="${venta.empleado.nombre}"></td>
+            <td th:text="${venta.articulo.nombre}"></td>
+            <td th:text="${venta.cliente.nombre}"></td>
+            <td th:text="${venta.fechaVenta}"></td>
+            <td th:text="${venta.precioVenta}"></td>
+            <td>
+                <a th:href="@{/ventas/{id}(id=${venta.id})}" class="btn btn-primary btn-sm">
+                    <i class="bi bi-eye"></i> Ver
+                </a>
+                <a th:href="@{ventas/edit/{id}(id=${venta.id})}" class="btn btn-warning btn-sm">
+                    <i class="bi bi-pencil"></i> Editar
+                </a>
+                <a th:href="@{/ventas/delete/{id}(id=${venta.id})}" class="btn btn-danger btn-sm">
+                    <i class="bi bi-trash"></i> Eliminar
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

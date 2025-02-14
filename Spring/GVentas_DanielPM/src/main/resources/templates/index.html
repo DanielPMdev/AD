@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Menú Principal</title>
+    <link rel="stylesheet" th:href="@{/css/menuInicio.css}"/>
+    <link rel="stylesheet" th:href="@{/css/formulario.css}"/>
+
+</head>
+<body>
+
+<div class="menu-container">
+    <h2>Menú Principal</h2>
+
+    <div class="menu-item">
+        <a th:href="@{/saludo}" class="menu-link">Ir a Saludo a nuevos USER</a>
+    </div>
+
+    <div class="menu-item">
+        <a th:href="@{/departamentos/}" class="menu-link">Departamentos</a>
+    </div>
+
+    <div class="menu-item">
+        <a th:href="@{/verReservas}" class="menu-link">Listado reservas. Tabla</a>
+    </div>
+
+
+    <div class="menu-item">
+        <a th:href="@{/registro/formulario}" class="menu-link">Registro nuevos usuarios</a>
+    </div>
+
+    <div class="menu-item">
+        <a th:href="@{/ventas/resumen}" class="menu-link">Resumen de Ventas</a>
+    </div>
+
+
+</div>
+</body>
+</html>
