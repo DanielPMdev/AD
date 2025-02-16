@@ -1,5 +1,6 @@
 package es.dpm.controladores;
 
+import es.dpm.modelo.Comida;
 import es.dpm.modelo.Equipo;
 import es.dpm.modelo.Hobby;
 import es.dpm.modelo.Persona;
@@ -10,6 +11,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import java.util.Arrays;
 
 @Controller
 public class FormularioControlador {
@@ -27,6 +30,7 @@ public class FormularioControlador {
     public String mostrarFormulario(Model model) {
         model.addAttribute("hobbies", Hobby.values());
         model.addAttribute("equipos", Equipo.values());
+        model.addAttribute("comidas", Arrays.asList(Comida.values()));
         model.addAttribute("rPersona", persona);  //datos es  el objeto "vehículo" de transporte. (Va instanciado)
         return "formularioEntrada";
     }

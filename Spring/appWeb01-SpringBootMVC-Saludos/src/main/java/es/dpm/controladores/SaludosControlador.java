@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class SaludosControlador {
 
     //http://localhost:9001/
-    @RequestMapping({"/"})
+    @RequestMapping({"/saludo"})
     public String irSaludo(Model model){
         String miNombre = "Bautista R";
         String miLocalidad = "Miguel Esteban";
@@ -21,7 +21,7 @@ public class SaludosControlador {
     }
 
     //http://localhost:9001/saludo
-    @GetMapping("/saludo")
+    @GetMapping("/saludov2")
     public String saludoModel(Model modelo) {
         String saludo = "Hola a todos. Os saluda SpringBoot MVC";
         modelo.addAttribute("mensaje", saludo);

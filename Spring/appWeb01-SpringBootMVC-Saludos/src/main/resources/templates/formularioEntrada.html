@@ -39,17 +39,10 @@
     <textarea id="comentario" name="comentario" rows="4" cols="50"></textarea>
 
     <label>Selecciona tus comidas favoritas:</label><br>
-    <input type="checkbox" id="lentejas" name="comidas" value="lentejas">
-    <label for="lentejas">Lentejas</label><br>
-
-    <input type="checkbox" id="pizza" name="comidas" value="pizza">
-    <label for="pizza">Pizza</label><br>
-
-    <input type="checkbox" id="macarrones" name="comidas" value="macarrones">
-    <label for="macarrones">Macarrones</label><br>
-
-    <input type="checkbox" id="ensalada" name="comidas" value="ensalada">
-    <label for="ensalada">Ensalada</label><br>
+    <div th:each="comida : ${comidas}">
+        <input type="checkbox" th:field="*{comidas}" th:value="${comida}" />
+        <label th:for="${#ids.next('comidas')}" th:text="${comida}"></label>
+    </div>
 
 
     <label for="equipo">Elige tu Equipo:</label>

@@ -9,11 +9,12 @@ import java.util.List;
 
 @Controller
 public class InicioControlador {
-    @GetMapping("/inicio")
+    @GetMapping("/")
     public String mostrarUrls(Model model) {
         List<String> urls = Arrays.asList(
                 "http://localhost:9000/",
                 "http://localhost:9000/saludo",
+                "http://localhost:9000/saludov2/",
                 "http://localhost:9000/saludoParametro?nombre=Pepe",
                 "http://localhost:9000/saludoVariable/Pepe",
                 "http://localhost:9000/saludoParametros?nombre=Bautisa&apellidos=Ramírez&localidad=M.Esteban",

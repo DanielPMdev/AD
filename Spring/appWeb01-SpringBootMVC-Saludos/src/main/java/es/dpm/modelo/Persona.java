@@ -1,11 +1,11 @@
 package es.dpm.modelo;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import es.dpm.util.ComidaListConverter;
+import jakarta.persistence.*;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 @Component
 @Entity
@@ -21,17 +21,18 @@ public class Persona {
     private String email;
     private String localidad;
     private Integer edad;
+    @Enumerated(EnumType.STRING) //GUARDA EL NOMBRE DEL ENUMERATED
     private Hobby hobby;
     private String comentario;
-
-    private String comidas;
+    //@Enumerated(EnumType.STRING)
+    @Convert(converter = ComidaListConverter.class) // Usa el convertidor
+    private List<Comida> comidas;
     private String equipo;
 
     public Persona() {
-
     }
 
-    public Persona(String nombre, String apellidos, String telefono, String email, String localidad, Integer edad, Hobby hobby, String comentario, String comidas, String equipo) {
+    public Persona(String nombre, String apellidos, String telefono, String email, String localidad, Integer edad, Hobby hobby, String comentario, List<Comida> comidas, String equipo) {
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.telefono = telefono;
@@ -45,8 +46,6 @@ public class Persona {
     }
 
     // Getters y setters
-
-
     public Long getId() {
         return id;
     }
@@ -119,11 +118,11 @@ public class Persona {
         this.comentario = comentario;
     }
 
-    public String getComidas() {
+    public List<Comida> getComidas() {
         return comidas;
     }
 
-    public void setComidas(String comidas) {
+    public void setComidas(List<Comida> comidas) {
         this.comidas = comidas;
     }
 
