@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Barra de Navegación</title>
+</head>
+<body>
+
+<nav th:fragment="miNav" class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand" href="https://www.linkedin.com/in/danielpmdev/">danielpm.dev</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item mx-2">
+          <a class="nav-link fw-bold text-white" style="font-size: 1.25rem;" th:href="@{/resumen}">Resumen Tareas</a>
+        </li>
+        <li class="nav-item mx-2">
+          <a class="nav-link fw-bold text-white " style="font-size: 1.25rem;" th:href="@{/tareas}">Tareas</a>
+        </li>
+        <li class="nav-item mx-2">
+          <a class="nav-link fw-bold text-white" style="font-size: 1.25rem;" th:href="@{/personas}">Personas</a>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+</body>
+</html>
