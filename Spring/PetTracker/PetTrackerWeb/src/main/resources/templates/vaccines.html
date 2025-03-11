@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Vacunas de la Mascota - PetTracker</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            margin: 0;
+            padding-top: 70px;
+        }
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+        .vaccines-container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            width: 100%;
+            margin: 20px auto;
+        }
+        .content-wrapper {
+            min-height: calc(100vh - 70px);
+        }
+        .list-group-item {
+            border: none;
+            padding: 10px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .vaccine-form {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<!-- Navbar -->
+<div th:replace="~{nav :: miNav}"></div>
+
+<!-- Contenedor de vacunas -->
+<div class="content-wrapper">
+    <div class="vaccines-container">
+        <h2 class="text-center mb-4">Vacunas de la Mascota</h2>
+        <div th:if="${error}" class="alert alert-danger" role="alert" th:text="${error}"></div>
+        <div th:if="${success}" class="alert alert-success" role="alert" th:text="${success}"></div>
+
+        <!-- Lista de vacunas -->
+        <h5>Lista de Vacunas</h5>
+        <ul class="list-group" th:unless="${#lists.isEmpty(pet.vaccineList)}">
+            <li class="list-group-item" th:each="vaccine : ${pet.vaccineList}">
+                <span th:text="${vaccine.vaccineName} + ' (' + ${vaccine.vaccineDate} + ')'"></span>
+                <form th:action="@{/pet/{id}/vaccines/delete/{vaccineId}(id=${pet.id},vaccineId=${vaccine.id})}" method="post" style="display:inline;">
+                    <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                </form>
+            </li>
+        </ul>
+        <p th:if="${#lists.isEmpty(pet.vaccineList)}" class="text-muted">No hay vacunas registradas</p>
+
+        <!-- Formulario para añadir nueva vacuna -->
+        <div class="vaccine-form">
+            <h5>Añadir Nueva Vacuna</h5>
+            <form th:action="@{/pet/{id}/vaccines/add(id=${pet.id})}" method="post" th:object="${newVaccine}">
+                <div class="mb-3">
+                    <label for="vaccineName" class="form-label">Nombre de la Vacuna</label>
+                    <input type="text" class="form-control" id="vaccineName" th:field="*{vaccineName}" required />
+                </div>
+                <div class="mb-3">
+                    <label for="vaccineDate" class="form-label">Fecha de la Vacuna</label>
+                    <input type="date" class="form-control" id="vaccineDate" th:field="*{vaccineDate}" required />
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Añadir Vacuna</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Botón para volver -->
+        <div class="text-center mt-4">
+            <a th:href="@{/pet/{id}(id=${pet.id})}" class="btn btn-outline-primary">Volver a Detalles</a>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

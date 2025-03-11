@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Ejercicios Físicos de la Mascota - PetTracker</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f8f9fa;
+      color: #333;
+      margin: 0;
+      padding-top: 70px;
+    }
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+    .exercises-container {
+      background-color: white;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      max-width: 800px;
+      width: 100%;
+      margin: 20px auto;
+    }
+    .content-wrapper {
+      min-height: calc(100vh - 70px);
+    }
+    .list-group-item {
+      border: none;
+      padding: 10px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .exercise-form {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+<!-- Navbar -->
+<div th:replace="~{nav :: miNav}"></div>
+
+<!-- Contenedor de ejercicios -->
+<div class="content-wrapper">
+  <div class="exercises-container">
+    <h2 class="text-center mb-4">Ejercicios Físicos de la Mascota</h2>
+    <div th:if="${error}" class="alert alert-danger" role="alert" th:text="${error}"></div>
+    <div th:if="${success}" class="alert alert-success" role="alert" th:text="${success}"></div>
+
+    <!-- Lista de ejercicios -->
+    <h5>Lista de Ejercicios</h5>
+    <ul class="list-group" th:unless="${#lists.isEmpty(pet.physicalExerciseList)}">
+      <li class="list-group-item" th:each="exercise : ${pet.physicalExerciseList}">
+        <span th:text="${exercise.exerciseDate} + ' - ' + ${exercise.duration / 60} + ' min'"></span>
+        <form th:action="@{/pet/{id}/exercises/delete/{exerciseId}(id=${pet.id},exerciseId=${exercise.id})}" method="post" style="display:inline;">
+          <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+        </form>
+      </li>
+    </ul>
+    <p th:if="${#lists.isEmpty(pet.physicalExerciseList)}" class="text-muted">No hay ejercicios registrados</p>
+
+    <!-- Formulario para añadir nuevo ejercicio -->
+    <div class="exercise-form">
+      <h5>Añadir Nuevo Ejercicio</h5>
+      <form th:action="@{/pet/{id}/exercises/add(id=${pet.id})}" method="post" th:object="${newExercise}">
+        <div class="mb-3">
+          <label for="duration" class="form-label">Duración (en minutos)</label>
+          <input type="number" class="form-control" id="duration" th:field="*{duration}" required min="1" step="1" />
+        </div>
+        <div class="mb-3">
+          <label for="exerciseDate" class="form-label">Fecha del Ejercicio</label>
+          <input type="date" class="form-control" id="exerciseDate" th:field="*{exerciseDate}" required />
+        </div>
+        <div class="text-center">
+          <button type="submit" class="btn btn-primary">Añadir Ejercicio</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Botón para volver -->
+    <div class="text-center mt-4">
+      <a th:href="@{/pet/{id}(id=${pet.id})}" class="btn btn-outline-primary">Volver a Detalles</a>
+    </div>
+  </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

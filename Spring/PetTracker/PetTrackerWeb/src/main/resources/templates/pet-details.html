@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalles de la Mascota - PetTracker</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            margin: 0;
+            padding-top: 70px;
+        }
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+        .pet-container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            width: 100%;
+            margin: 20px auto;
+        }
+        .pet-img {
+            max-width: 200px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        .content-wrapper {
+            min-height: calc(100vh - 70px);
+        }
+        .list-group-item {
+            border: none;
+            padding: 10px 0;
+        }
+        .editable-field {
+            width: 100%;
+        }
+        .disease-entry {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+<!-- Navbar -->
+<div th:replace="~{nav :: miNav}"></div>
+
+<!-- Contenedor de detalles de la mascota -->
+<div class="content-wrapper">
+    <div class="pet-container">
+        <h2 class="text-center mb-4">Detalles de la Mascota</h2>
+        <div th:if="${error}" class="alert alert-danger" role="alert" th:text="${error}"></div>
+        <div th:if="${success}" class="alert alert-success" role="alert" th:text="${success}"></div>
+
+        <!-- Formulario que envuelve los datos editables -->
+        <form th:action="@{/pet/{id}(id=${pet.id})}" method="post" th:object="${pet}">
+            <div th:if="${pet}" class="row">
+                <!-- Imagen y datos básicos -->
+                <div class="col-md-4 text-center">
+                    <img th:src="${pet.urlImage}" th:unless="${pet.urlImage == null}"
+                         alt="Imagen de la mascota" class="pet-img" />
+                    <p th:if="${pet.urlImage == null}" class="text-muted">No hay imagen disponible</p>
+                    <div th:unless="${editing}">
+                        <h4 th:text="${pet.name}">Nombre</h4>
+                        <a th:href="@{/pet/{id}(id=${pet.id}, editing=true)}" class="btn btn-outline-primary btn-sm mt-2">Editar Mascota</a>
+                    </div>
+                    <div th:if="${editing}">
+                        <input type="text" th:field="*{name}" class="form-control mb-2" placeholder="Nombre" required />
+                        <a th:href="@{/pet/{id}(id=${pet.id})}" class="btn btn-outline-secondary btn-sm mt-2">Cancelar</a>
+                    </div>
+                </div>
+
+                <!-- Información detallada -->
+                <div class="col-md-8">
+                    <dl class="row">
+                        <dt class="col-sm-4">Descripción:</dt>
+                        <dd class="col-sm-8" th:unless="${editing}" th:text="${pet.description ?: 'Sin descripción'}"></dd>
+                        <dd class="col-sm-8" th:if="${editing}">
+                            <textarea th:field="*{description}" class="form-control editable-field" rows="2"></textarea>
+                        </dd>
+
+                        <dt class="col-sm-4">Edad:</dt>
+                        <dd class="col-sm-8" th:unless="${editing}" th:text="${pet.age != null ? pet.age + ' años' : 'No especificada'}"></dd>
+                        <dd class="col-sm-8" th:if="${editing}">
+                            <input type="number" th:field="*{age}" class="form-control editable-field" min="0" />
+                        </dd>
+
+                        <dt class="col-sm-4">Especie:</dt>
+                        <dd class="col-sm-8" th:unless="${editing}" th:text="${pet.species}"></dd>
+                        <dd class="col-sm-8" th:if="${editing}">
+                            <input type="text" th:field="*{species}" class="form-control editable-field" required />
+                        </dd>
+
+                        <dt class="col-sm-4">Raza:</dt>
+                        <dd class="col-sm-8" th:unless="${editing}" th:text="${pet.breed ?: 'No especificada'}"></dd>
+                        <dd class="col-sm-8" th:if="${editing}">
+                            <input type="text" th:field="*{breed}" class="form-control editable-field" />
+                        </dd>
+
+                        <dt class="col-sm-4">Sexo:</dt>
+                        <dd class="col-sm-8" th:unless="${editing}" th:text="${#strings.trim(pet.sex) eq 'M' ? 'Macho' : 'Hembra'}"></dd>
+                        <dd class="col-sm-8" th:if="${editing}">
+                            <label>
+                                <select th:field="*{sex}" class="form-control editable-field">
+                                    <option value="M">Macho</option>
+                                    <option value="H">Hembra</option>
+                                </select>
+                            </label>
+                        </dd>
+
+                        <dt class="col-sm-4">Peso:</dt>
+                        <dd class="col-sm-8" th:unless="${editing}" th:text="${pet.weight != null ? pet.weight + ' kg' : 'No especificado'}"></dd>
+                        <dd class="col-sm-8" th:if="${editing}">
+                            <input type="number" th:field="*{weight}" class="form-control editable-field" step="0.1" min="0" />
+                        </dd>
+
+                        <dt class="col-sm-4">URL Imagen:</dt>
+                        <dd class="col-sm-8" th:unless="${editing}" th:text="${pet.urlImage ?: 'No especificada'}" style="word-break: break-all;"></dd>
+                        <dd class="col-sm-8" th:if="${editing}">
+                            <input type="url" th:field="*{urlImage}" class="form-control editable-field" placeholder="https://example.com/image.jpg" />
+                        </dd>
+
+<!--                        <dt class="col-sm-4">Dueño:</dt>-->
+<!--                        <dd class="col-sm-8" th:text="${pet.owner?.username ?: 'Sin dueño asignado'}"></dd>-->
+                    </dl>
+
+                    <!-- Sección para enfermedades -->
+                    <h5>Enfermedades</h5>
+                    <p th:unless="${editing}" th:text="${pet.diseaseList != null and !#lists.isEmpty(pet.diseaseList) ? #strings.listJoin(pet.diseaseList, ', ') : 'No hay enfermedades registradas'}"
+                       class="mb-3"></p>
+                    <div th:if="${editing}" class="mb-3">
+                        <label class="form-label">Enfermedades</label>
+                        <div id="diseaseListContainer">
+                            <!-- Entradas dinámicas se añadirán aquí -->
+                        </div>
+                        <button type="button" class="btn btn-outline-primary btn-sm mt-2" id="addDiseaseBtn">Añadir Enfermedad</button>
+                    </div>
+
+                    <!-- Lista de vacunas con botón de gestión -->
+                    <h5>Vacunas <a th:href="@{/pet/{id}/vaccines(id=${pet.id})}" class="btn btn-outline-primary btn-sm float-end">Gestionar Vacunas</a></h5>
+                    <ul class="list-group" th:unless="${#lists.isEmpty(pet.vaccineList)}">
+                        <li class="list-group-item" th:each="vaccine : ${pet.vaccineList}"
+                            th:text="${vaccine.vaccineName} + ' (' + ${vaccine.vaccineDate} + ')'"></li>
+                    </ul>
+                    <p th:if="${#lists.isEmpty(pet.vaccineList)}" class="text-muted">No hay vacunas registradas</p>
+
+                    <!-- Lista de reportes con botón de gestión -->
+                    <h5>Reportes <a th:href="@{/pet/{id}/reports(id=${pet.id})}" class="btn btn-outline-primary btn-sm float-end">Gestionar Reportes</a></h5>
+                    <ul class="list-group" th:unless="${#lists.isEmpty(pet.reportList)}">
+                        <li class="list-group-item" th:each="report : ${pet.reportList}">
+                            <span th:text="${report.reason} + ' (' + ${report.reportDate} + ')'"></span>
+                            <ul th:unless="${#lists.isEmpty(report.prescriptionList)}" class="ms-4">
+                                <li th:each="prescription : ${report.prescriptionList}"
+                                    th:text="${prescription.medName} + ' (' + ${prescription.startDate} + ' a ' + ${prescription.endDate} + ', ' + ${prescription.frequency} + ')'"></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <p th:if="${#lists.isEmpty(pet.reportList)}" class="text-muted">No hay reportes registrados</p>
+
+                    <!-- Lista de ejercicios físicos con botón de gestión -->
+                    <h5>Ejercicio Físico <a th:href="@{/pet/{id}/exercises(id=${pet.id})}" class="btn btn-outline-primary btn-sm float-end">Gestionar Ejercicios</a></h5>
+                    <ul class="list-group" th:unless="${#lists.isEmpty(pet.physicalExerciseList)}">
+                        <li class="list-group-item" th:each="exercise : ${pet.physicalExerciseList}"
+                            th:text="${exercise.exerciseDate} + ' - ' + ${exercise.duration / 60} + ' min'"></li>
+                    </ul>
+                    <p th:if="${#lists.isEmpty(pet.physicalExerciseList)}" class="text-muted">No hay ejercicios registrados</p>
+                </div>
+            </div>
+
+            <!-- Si no hay datos -->
+            <div th:unless="${pet}" class="text-center">
+                <p class="text-muted">No se encontraron detalles de la mascota.</p>
+            </div>
+
+            <!-- Botones para volver y guardar -->
+            <div class="text-center mt-4">
+                <a href="/mascotas" class="btn btn-outline-primary me-2">Volver</a>
+                <button type="submit" th:if="${editing}" class="btn btn-primary">Guardar</button>
+            </div>
+        </form>
+
+        <!-- Formulario de eliminación separado -->
+        <div class="text-center mt-3">
+            <form th:action="@{/pet/delete/{id}(id=${pet.id})}" method="post">
+                <button type="submit" class="btn btn-danger px-3 py-2" onclick="return confirm('¿Estás seguro de que deseas eliminar tu mascota? Esta acción no se puede deshacer.');">
+                    Eliminar
+                </button>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script th:inline="javascript">
+    document.addEventListener('DOMContentLoaded', function () {
+        const container = document.getElementById('diseaseListContainer');
+        const addBtn = document.getElementById('addDiseaseBtn');
+        const isEditing = /*[[${editing}]]*/ false;
+
+        // Solo ejecutar si estamos en modo edición
+        if (isEditing && container && addBtn) {
+            // Cargar enfermedades existentes
+            const diseases = /*[[${pet.diseaseList}]]*/ [];
+            if (diseases && diseases.length > 0) {
+                diseases.forEach(disease => addDiseaseEntry(disease));
+            } else {
+                addDiseaseEntry(); // Añadir una entrada vacía si no hay enfermedades
+            }
+
+            // Evento para el botón "Añadir Enfermedad"
+            addBtn.addEventListener('click', function () {
+                addDiseaseEntry();
+            });
+        }
+
+        // Función para añadir una nueva entrada de enfermedad
+        function addDiseaseEntry(value = '') {
+            const entryDiv = document.createElement('div');
+            entryDiv.className = 'disease-entry';
+
+            const input = document.createElement('input');
+            input.type = 'text';
+            input.className = 'form-control';
+            input.name = 'diseaseList'; // Nombre del campo para enviar como lista
+            input.value = value;
+
+            const removeBtn = document.createElement('button');
+            removeBtn.type = 'button';
+            removeBtn.className = 'btn btn-danger btn-sm ms-2';
+            removeBtn.textContent = 'Eliminar';
+            removeBtn.onclick = function () {
+                container.removeChild(entryDiv);
+            };
+
+            entryDiv.appendChild(input);
+            entryDiv.appendChild(removeBtn);
+            container.appendChild(entryDiv);
+        }
+    });
+</script>
+</body>
+</html>

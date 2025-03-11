@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Mi Perfil - PetTracker</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f8f9fa;
+      color: #333;
+      margin: 0;
+      padding-top: 70px; /* Espacio para el navbar fijo */
+    }
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+    .profile-container {
+      background-color: white;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      max-width: 600px;
+      width: 100%;
+      margin: 0 auto;
+    }
+    .content-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: calc(100vh - 70px);
+    }
+    .profile-img {
+      max-width: 150px;
+      border-radius: 50%;
+      margin-bottom: 20px;
+    }
+    .btn-custom {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+<!-- Navbar -->
+<div th:replace="~{nav :: miNav}"></div>
+
+<!-- Contenedor del perfil -->
+<div class="content-wrapper">
+  <div class="profile-container">
+    <h2 class="text-center mb-4">Mi Perfil</h2>
+
+    <!-- Mensaje de error si existe -->
+    <div th:if="${error}" class="alert alert-danger" role="alert" th:text="${error}"></div>
+
+    <!-- Datos del usuario -->
+    <div th:if="${owner}" class="text-center">
+      <img th:src="${owner.urlImage}" th:unless="${owner.urlImage == null}" alt="Imagen de perfil" class="profile-img" id="profileImage" />
+      <p th:if="${owner.urlImage == null}" class="text-muted">No hay imagen de perfil</p>
+
+      <!-- Botón para cambiar la imagen -->
+      <div class="mb-3">
+        <button type="button" class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#changeImageModal">
+          Cambiar Imagen
+        </button>
+      </div>
+
+      <h4 class="mb-3" th:text="${owner.username}">Nombre de usuario</h4>
+
+      <!-- Formulario para editar el email -->
+<!--      <form th:action="@{/perfil/update}" method="post" class="mb-3">-->
+<!--        <div class="mb-3">-->
+<!--          <label for="email" class="form-label"><strong>Email:</strong></label>-->
+<!--          <input type="email" class="form-control" id="email" name="email" th:value="${owner.email}" required />-->
+
+<!--          <label for="password" class="form-label"><strong>Contraseña:</strong></label>-->
+<!--          <input type="password" class="form-control" id="password" name="password" th:value="${owner.password}" required />-->
+<!--        </div>-->
+<!--        <button type="submit" class="btn btn-primary btn-custom">Guardar Cambios</button>-->
+<!--      </form>-->
+
+      <p><strong>Email:</strong> <span th:text="${owner.email}">email@ejemplo.com</span></p>
+
+      <!-- Botón para cambiar la contraseña -->
+      <div class="mb-3">
+        <button type="button" class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#changePasswordModal">
+          Cambiar Contraseña
+        </button>
+      </div>
+
+<!--      <p><strong>Mascotas:</strong> <span th:text="${owner.petList != null ? owner.petList.size() : 0}">0</span></p>-->
+
+      <!-- Botones de acción -->
+      <div class="mt-4">
+        <!-- Botón para eliminar el Owner -->
+        <form th:action="@{/perfil/delete}" method="post" style="display:inline;">
+          <button type="submit" class="btn btn-danger btn-custom" onclick="return confirm('¿Estás seguro de que deseas eliminar tu perfil? Esta acción no se puede deshacer.');">
+            Eliminar Perfil
+          </button>
+        </form>
+
+        <!-- Botón para cerrar sesión -->
+        <form th:action="@{/logout}" method="post" style="display:inline; margin-left: 10px;">
+          <button type="submit" class="btn btn-outline-secondary btn-custom">Cerrar Sesión</button>
+        </form>
+      </div>
+
+    </div>
+
+    <!-- Si no hay datos -->
+    <div th:unless="${owner}" class="text-center">
+      <p class="text-muted">No se pudieron cargar los datos del perfil.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal para cambiar la imagen -->
+<div class="modal fade" id="changeImageModal" tabindex="-1" aria-labelledby="changeImageModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="changeImageModalLabel">Cambiar Imagen de Perfil</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="imageForm" th:action="@{/perfil/update-image}" method="post">
+          <div class="mb-3">
+            <label for="imageUrl" class="form-label">URL de la nueva imagen</label>
+            <input type="url" class="form-control" id="imageUrl" name="imageUrl" placeholder="https://example.com/image.jpg" required />
+          </div>
+          <button type="submit" class="btn btn-primary">Actualizar Imagen</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal para cambiar la contraseña -->
+<div class="modal fade" id="changePasswordModal" tabindex="-1" aria-labelledby="changePasswordModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="changePasswordModalLabel">Cambiar Contraseña</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div th:if="${modalError}" class="alert alert-danger" role="alert" th:text="${modalError}"></div>
+        <form id="passwordForm" th:action="@{/perfil/change-password}" method="post" onsubmit="return validatePasswords()">
+          <input type="hidden" name="ownerId" th:value="${owner.id}" />
+          <div class="mb-3">
+            <label for="newPassword" class="form-label">Nueva Contraseña</label>
+            <input type="password" class="form-control" id="newPassword" name="newPassword" required oninput="checkPasswords()" />
+          </div>
+          <div class="mb-3">
+            <label for="confirmPassword" class="form-label">Confirmar Nueva Contraseña</label>
+            <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" required oninput="checkPasswords()" />
+            <div id="passwordMismatch" class="text-danger mt-1" style="display: none;">Las contraseñas no coinciden</div>
+          </div>
+          <button type="submit" class="btn btn-primary" id="submitButton" disabled>Actualizar Contraseña</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  function checkPasswords() {
+    const newPassword = document.getElementById('newPassword').value;
+    const confirmPassword = document.getElementById('confirmPassword').value;
+    const mismatchMessage = document.getElementById('passwordMismatch');
+    const submitButton = document.getElementById('submitButton');
+
+    if (newPassword === confirmPassword && newPassword !== '') {
+      mismatchMessage.style.display = 'none';
+      submitButton.disabled = false;
+    } else {
+      mismatchMessage.style.display = newPassword !== confirmPassword ? 'block' : 'none';
+      submitButton.disabled = true;
+    }
+  }
+
+  function validatePasswords() {
+    const newPassword = document.getElementById('newPassword').value;
+    const confirmPassword = document.getElementById('confirmPassword').value;
+    return newPassword === confirmPassword && newPassword !== '';
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Barra de Navegación</title>
+</head>
+<body>
+
+<nav th:fragment="miNav" class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand d-flex align-items-center" th:href="@{/}">
+<!--            <img src="/img/logo.png" alt="PetTracker Logo" style="height: 60px; margin-right: 15px;">-->
+            <span>PetTracker</span>
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+            <ul class="navbar-nav">
+                <!-- Opciones visibles solo si NO está registrado -->
+<!--                <li class="nav-item mx-2"> &lt;!&ndash;th:unless="${authenticated}" &ndash;&gt;-->
+<!--                    <a class="nav-link fw-bold text-white" style="font-size: 1.25rem;" th:href="@{/register}">Registrarte</a>-->
+<!--                </li>-->
+<!--                <li class="nav-item mx-2">  &lt;!&ndash;th:unless="${authenticated}" &ndash;&gt;-->
+<!--                    <a class="nav-link fw-bold text-white" style="font-size: 1.25rem;" th:href="@{/login}">Conectarse</a>-->
+<!--                </li>-->
+                <!-- Opciones visibles solo si SÍ está registrado -->
+                <li class="nav-item mx-2"> <!--th:if="${authenticated}" -->
+                    <a class="nav-link fw-bold text-white" style="font-size: 1.25rem;" th:href="@{/mascotas}">Mis Mascotas</a>
+                </li>
+                <li class="nav-item mx-2"> <!--th:if="${authenticated}" -->
+                    <a class="nav-link fw-bold text-white" style="font-size: 1.25rem;" th:href="@{/perfil}">Mi Perfil</a>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</nav>
+
+</body>
+</html>
